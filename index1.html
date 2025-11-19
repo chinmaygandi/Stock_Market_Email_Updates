@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Stock Market Updates Newsletter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Optional: nicer font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-start: #020617;
+      --bg-end: #0f172a;
+      --card-bg: rgba(15, 23, 42, 0.95);
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.15);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, var(--bg-start), var(--bg-end));
+      color: var(--text-main);
+    }
+
+    .card {
+      width: 100%;
+      max-width: 900px;
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 24px 24px 32px;
+      box-shadow:
+        0 18px 45px rgba(15, 23, 42, 0.9),
+        0 0 0 1px rgba(148, 163, 184, 0.15);
+      border: 1px solid var(--border-subtle);
+      backdrop-filter: blur(12px);
+    }
+
+    @media (min-width: 768px) {
+      .card {
+        padding: 32px 36px 40px;
+      }
+    }
+
+    .card-header {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .icon-chip {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #4ade80, #16a34a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 8px var(--accent-soft);
+      flex-shrink: 0;
+      font-size: 22px;
+    }
+
+    .title-block h1 {
+      font-size: 1.5rem;
+      margin: 0 0 6px;
+      letter-spacing: 0.02em;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .title-block h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    .title-pill {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(15, 118, 110, 0.25);
+      border: 1px solid rgba(45, 212, 191, 0.35);
+      color: #a5f3fc;
+    }
+
+    .card-subtitle {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .card-subtitle strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .benefits {
+      margin: 16px 0 22px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: radial-gradient(circle at left, var(--accent-soft), transparent 70%);
+      border: 1px dashed rgba(52, 211, 153, 0.5);
+      display: grid;
+      gap: 6px;
+    }
+
+    @media (min-width: 640px) {
+      .benefits {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .benefit-item {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .benefit-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+      flex-shrink: 0;
+    }
+
+    .iframe-wrapper {
+      margin-top: 6px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: #020617;
+    }
+
+    .iframe-note {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot-green {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-soft);
+      flex-shrink: 0;
+    }
+
+    .footer {
+      margin-top: 18px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      padding-top: 12px;
+    }
+
+    .footer a {
+      color: #93c5fd;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-header">
+      <div class="icon-chip">📈</div>
+      <div class="title-block">
+        <div class="title-pill">Daily Market Pulse</div>
+        <h1>
+          Next Day Stock Market Email Updates
+        </h1>
+        <p class="card-subtitle">
+          Get <strong>concise</strong> stock market updates delivered straight to your inbox —
+          key moves, top gainers/losers, and levels to watch.
+        </p>
+      </div>
+    </div>
+
+    <div class="benefits">
+      <div class="benefit-item">
+        <span class="benefit-dot"></span>
+        Pre-market snapshots
+      </div>
+      <div class="benefit-item">
+        <span class="benefit-dot"></span>
+        Big movers & trends
+      </div>
+      <div class="benefit-item">
+        <span class="benefit-dot"></span>
+        No spam, easy unsubscribe
+      </div>
+    </div>
+
+    <div class="iframe-wrapper">
+      <!-- Microsoft Forms embed -->
+      <iframe
+        width="100%"
+        height="640"
+        src="https://forms.office.com/Pages/ResponsePage.aspx?id=gcLuqKOqrk2sm5o5i5IV58vIl9taeyhBm7lsg6HvzltUNENTMFk3QzM3MDlJOFgwSllISFpNMkdHSC4u&embed=true"
+        frameborder="0"
+        marginwidth="0"
+        marginheight="0"
+        style="border:none; max-width:100%; display:block;"
+        allowfullscreen
+        webkitallowfullscreen
+        mozallowfullscreen
+        msallowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="iframe-note">
+      <span class="dot-green"></span>
+      Enter your email above to start receiving stock market updates. You can opt out anytime.
+    </div>
+
+    <div class="footer">
+      <span>Data is for informational purposes only, not financial advice.</span>
+      <span>Powered by Microsoft Forms &amp; Power Automate</span>
+    </div>
+  </div>
+</body>
+</html>
